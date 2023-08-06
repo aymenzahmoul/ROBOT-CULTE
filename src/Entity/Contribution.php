@@ -26,6 +26,9 @@ class Contribution
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Contribution')]
+    private ?Projet $IdProjet = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Contribution
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIdProjet(): ?Projet
+    {
+        return $this->IdProjet;
+    }
+
+    public function setIdProjet(?Projet $IdProjet): static
+    {
+        $this->IdProjet = $IdProjet;
 
         return $this;
     }

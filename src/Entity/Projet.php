@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjetRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,31 @@ class Projet
 
     #[ORM\Column(length: 255)]
     private ?string $statut = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Projet')]
+    private ?MaisonDeCulte $IdMaisonDeCulte = null;
+
+    #[ORM\OneToMany(mappedBy: 'IdProjet', targetEntity: Contribution::class)]
+    private Collection $Contribution;
+
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'Statut')]
+    private ?self $IdStatut = null;
+
+    #[ORM\OneToMany(mappedBy: 'IdStatut', targetEntity: self::class)]
+    private Collection $Statut;
+
+    #[ORM\ManyToOne(inversedBy: 'Projet')]
+    private ?Donateur $IdDonateur = null;
+
+    #[ORM\OneToMany(mappedBy: 'Projet', targetEntity: Statut::class)]
+    private Collection $statuts;
+
+    public function __construct()
+    {
+        $this->Contribution = new ArrayCollection();
+        $this->Statut = new ArrayCollection();
+        $this->statuts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,5 +134,101 @@ class Projet
         $this->statut = $statut;
 
         return $this;
+    }
+
+    public function getIdMaisonDeCulte(): ?MaisonDeCulte
+    {
+        return $this->IdMaisonDeCulte;
+    }
+
+    public function setIdMaisonDeCulte(?MaisonDeCulte $IdMaisonDeCulte): static
+    {
+        $this->IdMaisonDeCulte = $IdMaisonDeCulte;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contribution>
+     */
+    public function getContribution(): Collection
+    {
+        return $this->Contribution;
+    }
+
+    public function addContribution(Contribution $contribution): static
+    {
+        if (!$this->Contribution->contains($contribution)) {
+            $this->Contribution->add($contribution);
+            $contribution->setIdProjet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContribution(Contribution $contribution): static
+    {
+        if ($this->Contribution->removeElement($contribution)) {
+            // set the owning side to null (unless already changed)
+            if ($contribution->getIdProjet() === $this) {
+                $contribution->setIdProjet(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIdStatut(): ?self
+    {
+        return $this->IdStatut;
+    }
+
+    public function setIdStatut(?self $IdStatut): static
+    {
+        $this->IdStatut = $IdStatut;
+
+        return $this;
+    }
+
+    public function addStatut(self $statut): static
+    {
+        if (!$this->Statut->contains($statut)) {
+            $this->Statut->add($statut);
+            $statut->setIdStatut($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStatut(self $statut): static
+    {
+        if ($this->Statut->removeElement($statut)) {
+            // set the owning side to null (unless already changed)
+            if ($statut->getIdStatut() === $this) {
+                $statut->setIdStatut(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIdDonateur(): ?Donateur
+    {
+        return $this->IdDonateur;
+    }
+
+    public function setIdDonateur(?Donateur $IdDonateur): static
+    {
+        $this->IdDonateur = $IdDonateur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Statut>
+     */
+    public function getStatuts(): Collection
+    {
+        return $this->statuts;
     }
 }

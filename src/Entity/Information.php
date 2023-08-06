@@ -26,6 +26,9 @@ class Information
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin = null;
 
+    #[ORM\ManyToOne(inversedBy: 'information')]
+    private ?MaisonDeCulte $MaisonDeCulte = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Information
     public function setDateFin(\DateTimeInterface $date_fin): static
     {
         $this->date_fin = $date_fin;
+
+        return $this;
+    }
+
+    public function getMaisonDeCulte(): ?MaisonDeCulte
+    {
+        return $this->MaisonDeCulte;
+    }
+
+    public function setMaisonDeCulte(?MaisonDeCulte $MaisonDeCulte): static
+    {
+        $this->MaisonDeCulte = $MaisonDeCulte;
 
         return $this;
     }

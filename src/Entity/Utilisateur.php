@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
@@ -27,6 +29,14 @@ class Utilisateur
 
     #[ORM\Column(length: 255)]
     private ?string $role = null;
+
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Role::class)]
+    private Collection $Role;
+
+    public function __construct()
+    {
+        $this->Role = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,28 @@ class Utilisateur
     public function setRole(string $role): static
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function addRole(Role $role): static
+    {
+        if (!$this->Role->contains($role)) {
+            $this->Role->add($role);
+            $role->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRole(Role $role): static
+    {
+        if ($this->Role->removeElement($role)) {
+            // set the owning side to null (unless already changed)
+            if ($role->getUtilisateur() === $this) {
+                $role->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }

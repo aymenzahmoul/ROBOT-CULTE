@@ -25,6 +25,9 @@ class Statut
     #[ORM\Column(length: 255)]
     private ?string $suspendu = null;
 
+    #[ORM\ManyToOne(inversedBy: 'statuts')]
+    private ?Projet $Projet = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Statut
     public function setSuspendu(string $suspendu): static
     {
         $this->suspendu = $suspendu;
+
+        return $this;
+    }
+
+    public function getProjet(): ?Projet
+    {
+        return $this->Projet;
+    }
+
+    public function setProjet(?Projet $Projet): static
+    {
+        $this->Projet = $Projet;
 
         return $this;
     }
