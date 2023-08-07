@@ -4,4 +4,13 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
+    'app_admin' => [[], ['_controller' => 'App\\Controller\\AdminController::index'], [], [['text', '/admin']], [], [], []],
+    'app_contribution' => [[], ['_controller' => 'App\\Controller\\ContributionController::index'], [], [['text', '/contribution']], [], [], []],
+    'app_donateur' => [[], ['_controller' => 'App\\Controller\\DonateurController::index'], [], [['text', '/donateur']], [], [], []],
+    'app_information' => [[], ['_controller' => 'App\\Controller\\InformationController::index'], [], [['text', '/information']], [], [], []],
+    'app_maison_de_culte' => [[], ['_controller' => 'App\\Controller\\MaisonDeCulteController::index'], [], [['text', '/maison/de/culte']], [], [], []],
+    'app_projet' => [[], ['_controller' => 'App\\Controller\\ProjetController::index'], [], [['text', '/projet']], [], [], []],
+    'app_role' => [[], ['_controller' => 'App\\Controller\\RoleController::index'], [], [['text', '/role']], [], [], []],
+    'app_statut' => [[], ['_controller' => 'App\\Controller\\StatutController::index'], [], [['text', '/statut']], [], [], []],
+    'app_utlisateur' => [[], ['_controller' => 'App\\Controller\\UtlisateurController::index'], [], [['text', '/utlisateur']], [], [], []],
 ];
