@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProjetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,6 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProjetRepository::class)]
+#[ApiResource()]
 class Projet
 {
     #[ORM\Id]
@@ -40,23 +42,20 @@ class Projet
     #[ORM\OneToMany(mappedBy: 'IdProjet', targetEntity: Contribution::class)]
     private Collection $Contribution;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'Statut')]
-    private ?self $IdStatut = null;
+    #[ORM\OneToOne(targetEntity: self::class, inversedBy: 'Statut')]
+    private ?Statut $IdStatut = null;
 
-    #[ORM\OneToMany(mappedBy: 'IdStatut', targetEntity: self::class)]
-    private Collection $Statut;
+
 
     #[ORM\ManyToOne(inversedBy: 'Projet')]
     private ?Donateur $IdDonateur = null;
 
-    #[ORM\OneToMany(mappedBy: 'Projet', targetEntity: Statut::class)]
-    private Collection $statuts;
+    
 
     public function __construct()
     {
         $this->Contribution = new ArrayCollection();
-        $this->Statut = new ArrayCollection();
-        $this->statuts = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
@@ -189,29 +188,6 @@ class Projet
 
         return $this;
     }
-
-    public function addStatut(self $statut): static
-    {
-        if (!$this->Statut->contains($statut)) {
-            $this->Statut->add($statut);
-            $statut->setIdStatut($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStatut(self $statut): static
-    {
-        if ($this->Statut->removeElement($statut)) {
-            // set the owning side to null (unless already changed)
-            if ($statut->getIdStatut() === $this) {
-                $statut->setIdStatut(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getIdDonateur(): ?Donateur
     {
         return $this->IdDonateur;
@@ -227,8 +203,5 @@ class Projet
     /**
      * @return Collection<int, Statut>
      */
-    public function getStatuts(): Collection
-    {
-        return $this->statuts;
-    }
+  
 }

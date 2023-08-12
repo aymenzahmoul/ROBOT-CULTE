@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Entity;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MaisonDeCulteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: MaisonDeCulteRepository::class)]
+#[ApiResource()]
 class MaisonDeCulte
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['conference:list', 'conference:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -36,14 +39,13 @@ class MaisonDeCulte
     #[ORM\ManyToOne(inversedBy: 'MaisonDeCulte')]
     private ?Admin $responsableMaisonDeCulte = null;
 
-    #[ORM\OneToMany(mappedBy: 'MaisonDeCulte', targetEntity: Information::class)]
-    private Collection $information;
+ 
 
     public function __construct()
     {
         $this->Projet = new ArrayCollection();
         $this->Information = new ArrayCollection();
-        $this->information = new ArrayCollection();
+        
     }
 
     public function getId(): ?int

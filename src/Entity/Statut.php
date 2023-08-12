@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\StatutRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StatutRepository::class)]
+#[ApiResource()]
 class Statut
 {
     #[ORM\Id]
@@ -25,7 +27,7 @@ class Statut
     #[ORM\Column(length: 255)]
     private ?string $suspendu = null;
 
-    #[ORM\ManyToOne(inversedBy: 'statuts')]
+    #[ORM\OneToOne(inversedBy: 'statuts')]
     private ?Projet $Projet = null;
 
     public function getId(): ?int

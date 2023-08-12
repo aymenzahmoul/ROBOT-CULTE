@@ -2,12 +2,21 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\DonateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DonateurRepository::class)]
+
+
+    #[ApiResource(
+           collectionOperations: ['get' => ['normalization_context' => ['groups' => 'conference:list']],'post' => ['normalization_context' => ['groups' => 'conference:list']]],
+            itemOperations: ['get' => ['normalization_context' => ['groups' => 'conference:item']]],
+        
+           paginationEnabled: false,
+        )]
 class Donateur extends Utilisateur
 {
     #[ORM\Id]
