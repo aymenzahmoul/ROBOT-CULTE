@@ -803,6 +803,6 @@ class __TwigTemplate_f3038d33dbc4ea889a811b89ec34ea8fda29abd1e7d30a501f162b08ef1
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\maram\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
     }
 }

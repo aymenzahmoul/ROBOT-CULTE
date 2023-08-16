@@ -233,6 +233,6 @@ class __TwigTemplate_341c76fb344f11c9cdd020102c697d72abce5a3fdc4e87e677aa584b739
 
     <a href=\"{{ path('app_admins_new') }}\">Create new</a>
 {% endblock %}
-", "admins/index.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\admins\\index.html.twig");
+", "admins/index.html.twig", "C:\\Users\\maram\\ROBOT-CULTE\\templates\\admins\\index.html.twig");
     }
 }

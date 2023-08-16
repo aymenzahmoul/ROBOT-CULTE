@@ -9,31 +9,56 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 #[ORM\Entity(repositoryClass: ProjetRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Projet:list']],
+        'post' => ['normalization_context' => ['groups' => 'Projet:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Projet:item']],
+        'put' => ['normalization_context' => ['groups' => 'Projet:item']],
+        'delete' => ['normalization_context' => ['groups' => 'Projet:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
 class Projet
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?string $titre = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?float $montant = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?\DateTimeInterface $date_debut = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?\DateTimeInterface $date_fin = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Projet:list', 'Projet:item'])]
     private ?string $statut = null;
 
     #[ORM\ManyToOne(inversedBy: 'Projet')]

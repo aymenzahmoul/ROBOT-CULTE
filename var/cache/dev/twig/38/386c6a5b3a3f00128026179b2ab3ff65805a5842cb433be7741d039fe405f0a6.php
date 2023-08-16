@@ -97,6 +97,6 @@ class __TwigTemplate_2e7eae95904c547d111711eeffafb95a8e04a53fbfc67816f7e3684466f
         </div>
     </div>
 </div>
-", "@WebProfiler/Profiler/header.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\header.html.twig");
+", "@WebProfiler/Profiler/header.html.twig", "C:\\Users\\maram\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\header.html.twig");
     }
 }

@@ -8,20 +8,35 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 #[ORM\Entity(repositoryClass: DonateurRepository::class)]
 
 
-    #[ApiResource(
-           collectionOperations: ['get' => ['normalization_context' => ['groups' => 'conference:list']],'post' => ['normalization_context' => ['groups' => 'conference:list']]],
-            itemOperations: ['get' => ['normalization_context' => ['groups' => 'conference:item']]],
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Donateur:list']],
+        'post' => ['normalization_context' => ['groups' => 'Donateur:list']],
         
-           paginationEnabled: false,
-        )]
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Donateur:item']],
+        'put' => ['normalization_context' => ['groups' => 'Donateur:item']],
+        'delete' => ['normalization_context' => ['groups' => 'Donateur:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
+ 
 class Donateur extends Utilisateur
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+ 
     private ?int $id = null;
 
     #[ORM\OneToMany(mappedBy: 'IdDonateur', targetEntity: Projet::class)]

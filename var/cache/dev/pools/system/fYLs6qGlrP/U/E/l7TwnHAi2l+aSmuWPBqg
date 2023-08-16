@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CStatut%2523setStatistique
+
+return [PHP_INT_MAX, []];

@@ -6,25 +6,48 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\RoleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: RoleRepository::class)]
-#[ApiResource()]
+
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => ' Role:list']],
+        'post' => ['normalization_context' => ['groups' => ' Role:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => ' Role:item']],
+        'put' => ['normalization_context' => ['groups' => ' Role:item']],
+        'delete' => ['normalization_context' => ['groups' => ' Role:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
 class Role
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['Role:list', 'Role:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Role:list', 'Role:item'])]
     private ?string $visiteur = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Role:list', 'Role:item'])]
     private ?string $admins = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Role:list', 'Role:item'])]
     private ?string $donateur = null;
 
     #[ORM\ManyToOne(inversedBy: 'Role')]
+    
     private ?Utilisateur $utilisateur = null;
 
     public function getId(): ?int

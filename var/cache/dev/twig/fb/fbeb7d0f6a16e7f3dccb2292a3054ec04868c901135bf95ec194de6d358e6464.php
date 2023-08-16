@@ -482,6 +482,6 @@ class __TwigTemplate_b51e2c232c5e23494b54ddfeb8c488a02c9d94d4710611526a7687290d8
         {% endfor %}
     </table>
 {% endmacro %}
-", "@WebProfiler/Collector/events.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\events.html.twig");
+", "@WebProfiler/Collector/events.html.twig", "C:\\Users\\maram\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\events.html.twig");
     }
 }

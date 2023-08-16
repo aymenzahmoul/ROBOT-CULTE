@@ -146,6 +146,6 @@ class __TwigTemplate_b206a7c62d86abfd7faa1624eba4d3f9d767f84ffaf4c72a93805a8c937
         </div>
     </div>
 {% endblock %}
-", "@WebProfiler/Profiler/toolbar_redirect.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar_redirect.html.twig");
+", "@WebProfiler/Profiler/toolbar_redirect.html.twig", "C:\\Users\\maram\\ROBOT-CULTE\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar_redirect.html.twig");
     }
 }

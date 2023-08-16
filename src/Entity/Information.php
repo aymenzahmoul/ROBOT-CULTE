@@ -6,26 +6,48 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InformationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: InformationRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Information:list']],
+        'post' => ['normalization_context' => ['groups' => 'Information:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Information:item']],
+        'put' => ['normalization_context' => ['groups' => 'Information:item']],
+        'delete' => ['normalization_context' => ['groups' => 'Information:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
 class Information
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['Information:list', 'Information:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Information:list', 'Information:item'])]
     private ?string $titre = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Information:list', 'Information:item'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['Information:list', 'Information:item'])]
     private ?\DateTimeInterface $date_debut = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['Information:list', 'Information:item'])]
     private ?\DateTimeInterface $date_fin = null;
 
     #[ORM\ManyToOne(inversedBy: 'information')]

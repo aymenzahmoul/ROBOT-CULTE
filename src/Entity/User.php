@@ -9,26 +9,49 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'User:list']],
+        'post' => ['normalization_context' => ['groups' => 'User:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'User:item']],
+        'put' => ['normalization_context' => ['groups' => 'User:item']],
+        'delete' => ['normalization_context' => ['groups' => 'User:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
+ 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['User:list', 'User:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Groups(['User:list', 'User:item'])]
     private ?string $email = null;
 
     #[ORM\Column]
+    #[Groups(['User:list', 'User:item'])]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Groups(['User:list', 'User:item'])]
     private ?string $password = null;
 
     public function getId(): ?int

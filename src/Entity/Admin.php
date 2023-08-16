@@ -3,22 +3,43 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\OpenApi\Model\Operation;
-use ApiPlatform\Metadata\Operations;
 use App\Repository\AdminRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use PhpParser\Node\Expr\New_;
+
+use Symfony\Component\Serializer\Annotation\Groups;
+
+
+
 
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 #[ORM\Table(name: '`admin`')]
-#[ApiResource( )]
+
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Admin:list']],
+        'post' => ['normalization_context' => ['groups' => 'Admin:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Admin:item']],
+        'put' => ['normalization_context' => ['groups' => 'Admin:item']],
+        'delete' => ['normalization_context' => ['groups' => 'Admin:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
+ 
 class Admin extends Utilisateur
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+  
     private ?int $id = null;
 
     #[ORM\OneToMany(mappedBy: 'responsableMaisonDeCulte', targetEntity: MaisonDeCulte::class)]

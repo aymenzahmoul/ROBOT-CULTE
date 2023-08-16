@@ -10,33 +10,44 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ContributionRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get' => ['normalization_context' => ['groups' => 'conference:list']],'post' => ['normalization_context' => ['groups' => 'conference:list']]],
-     itemOperations: ['get' => ['normalization_context' => ['groups' => 'conference:item']]],
- 
-    paginationEnabled: false,
- )]
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Contribution:list']],
+        'post' => ['normalization_context' => ['groups' => 'Contribution:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Contribution:item']],
+       
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
+    
 class Contribution
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['conference:list', 'conference:item'])]
+    #[Groups(['Contribution:list', 'Contribution:item'])]
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Groups(['conference:list', 'conference:item'])]
+    #[Groups(['Contribution:list', 'Contribution:item'])]
     private ?float $montant = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Groups(['conference:list', 'conference:item'])]
+    #[Groups(['Contribution:list', 'Contribution:item'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['conference:list', 'conference:item'])]
+    #[Groups(['Contribution:list', 'Contribution:item'])]
     private ?string $type_de_contribution = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['conference:list', 'conference:item'])]
+    #[Groups(['Contribution:list', 'Contribution:item'])]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'Contribution')]

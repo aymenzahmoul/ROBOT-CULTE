@@ -6,28 +6,51 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\StatutRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: StatutRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'Statut:list']],
+        'post' => ['normalization_context' => ['groups' => ' Statut:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => ' Statut:item']],
+        'put' => ['normalization_context' => ['groups' => 'Statut:item']],
+        'delete' => ['normalization_context' => ['groups' => ' Statut:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
 class Statut
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['Statut:list', 'Statut:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Statut:list', 'Statut:item'])]
     private ?string $statistique = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Statut:list', 'Statut:item'])]
     private ?string $en_cours = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Statut:list', 'Statut:item'])]
     private ?string $terminer = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['Statut:list', 'Statut:item'])]
     private ?string $suspendu = null;
 
     #[ORM\OneToOne(inversedBy: 'statuts')]
+    
     private ?Projet $Projet = null;
 
     public function getId(): ?int

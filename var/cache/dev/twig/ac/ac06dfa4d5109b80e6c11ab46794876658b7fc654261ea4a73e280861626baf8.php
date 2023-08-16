@@ -160,6 +160,6 @@ class __TwigTemplate_5c15ba12029e251d35aa533dc9bcedaac46bcca55914a2a86d3491a4cac
         <button type=\"submit\" class=\"btn\">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
-", "registration/register.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\registration\\register.html.twig");
+", "registration/register.html.twig", "C:\\Users\\maram\\ROBOT-CULTE\\templates\\registration\\register.html.twig");
     }
 }

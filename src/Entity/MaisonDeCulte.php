@@ -8,23 +8,44 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
+
 #[ORM\Entity(repositoryClass: MaisonDeCulteRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'get' => ['normalization_context' => ['groups' => 'MaisonDeCulte:list']],
+        'post' => ['normalization_context' => ['groups' => 'MaisonDeCulte:list']],
+        
+      
+    ],
+    itemOperations: [
+        'get' => ['normalization_context' => ['groups' => 'MaisonDeCulte:item']],
+        'put' => ['normalization_context' => ['groups' => 'MaisonDeCulte:item']],
+        'delete' => ['normalization_context' => ['groups' => 'MaisonDeCulte:item']]
+        
+       
+    ],
+    
+    paginationEnabled: false
+)]
 class MaisonDeCulte
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['conference:list', 'conference:item'])]
+    #[Groups(['MaisonDeCulte:list', 'MaisonDeCulte:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['MaisonDeCulte:list', 'MaisonDeCulte:item'])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['MaisonDeCulte:list', 'MaisonDeCulte:item'])]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['MaisonDeCulte:list', 'MaisonDeCulte:item'])]
     private ?string $responsable = null;
 
     #[ORM\OneToMany(mappedBy: 'IdMaisonDeCulte', targetEntity: Projet::class)]
