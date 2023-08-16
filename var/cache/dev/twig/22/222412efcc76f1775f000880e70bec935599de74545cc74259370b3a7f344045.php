@@ -215,6 +215,6 @@ class __TwigTemplate_b35594d0922c94fbf227bc3a9faa8c5cf3a994539e3a93e4f50a80c4b9f
 
     <a href=\"{{ path('app_donateur_new') }}\">Create new</a>
 {% endblock %}
-", "donateur/index.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\donateur\\index.html.twig");
+", "donateur/index.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\donateur\\index.html.twig");
     }
 }

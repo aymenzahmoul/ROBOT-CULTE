@@ -115,6 +115,6 @@ class __TwigTemplate_355a18c8db5c0c188f2130f41aabf42d67ef72f9d8aa38e3a8442352ea3
 
     <a href=\"{{ path('app_donateur_index') }}\">back to list</a>
 {% endblock %}
-", "donateur/new.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\donateur\\new.html.twig");
+", "donateur/new.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\donateur\\new.html.twig");
     }
 }

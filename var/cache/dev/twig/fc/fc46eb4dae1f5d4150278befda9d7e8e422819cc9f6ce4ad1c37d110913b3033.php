@@ -198,6 +198,6 @@ class __TwigTemplate_5a2d4a2489625d8985bb26117a988b6b68d94d1a5b8fd4c0a327634b0de
 
     {{ include('admins/_delete_form.html.twig') }}
 {% endblock %}
-", "admins/show.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\admins\\show.html.twig");
+", "admins/show.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\admins\\show.html.twig");
     }
 }

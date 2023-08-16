@@ -73,6 +73,6 @@ class __TwigTemplate_30744a8a5b03f6e30b7bdd15fecd48adc4a41fb6e0a089c86f69d74d3fb
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ admin.id) }}\">
     <button class=\"btn\">Delete</button>
 </form>
-", "admins/_delete_form.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\admins\\_delete_form.html.twig");
+", "admins/_delete_form.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\admins\\_delete_form.html.twig");
     }
 }

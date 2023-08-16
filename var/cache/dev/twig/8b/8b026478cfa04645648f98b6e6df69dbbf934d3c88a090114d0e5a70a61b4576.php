@@ -222,6 +222,6 @@ class __TwigTemplate_a9411378c91ba3a382ff9268ebe7e083c745dabe5384ce48761a659495a
 
     <a href=\"{{ path('app_projet_new') }}\">Create new</a>
 {% endblock %}
-", "projet/index.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\projet\\index.html.twig");
+", "projet/index.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\projet\\index.html.twig");
     }
 }

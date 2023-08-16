@@ -164,6 +164,6 @@ class __TwigTemplate_fc25b404cdb447e0217019b573fd1260ea9b1cbd768a6b074bb76f0c373
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\base.html.twig");
     }
 }

@@ -115,6 +115,6 @@ class __TwigTemplate_4808f32f3c12ecc9ee45cf642c232062d5901a9de9f799484a0f05fdc12
 
     <a href=\"{{ path('app_admins_index') }}\">back to list</a>
 {% endblock %}
-", "admins/new.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\admins\\new.html.twig");
+", "admins/new.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\admins\\new.html.twig");
     }
 }

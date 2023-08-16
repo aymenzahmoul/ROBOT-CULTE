@@ -78,6 +78,6 @@ class __TwigTemplate_adb36ff61a7aa32d720f1023c0734c7f68ae11db9cec452b592ae9696a0
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "admins/_form.html.twig", "C:\\xampp\\htdocs\\robot_Culte2\\templates\\admins\\_form.html.twig");
+", "admins/_form.html.twig", "C:\\Users\\enaym\\Documents\\cours symfony\\ROBOT-CULTE\\templates\\admins\\_form.html.twig");
     }
 }
